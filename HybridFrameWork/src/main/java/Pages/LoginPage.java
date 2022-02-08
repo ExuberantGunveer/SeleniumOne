@@ -18,7 +18,6 @@ public class LoginPage extends Base {
     public static String username ;
     public static String pass ;
 
-
     @FindBy(name = "email")
     WebElement emailAddress ;
 
@@ -51,7 +50,14 @@ public class LoginPage extends Base {
 
 
         path = System.getProperty("user.dir")+"//src//main//java//TestData//GunveerFile.xlsx";
-        FileInputStream prop = new FileInputStream(path);
+        FileInputStream prop = null;
+        try{
+            prop = new FileInputStream(path);
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
         XSSFWorkbook wb = new XSSFWorkbook(prop);
         XSSFSheet sheet = wb.getSheet("Sheet1");
 
