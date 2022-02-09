@@ -1,6 +1,8 @@
 package Pages;
 
 import BaseTest.Base;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebElement;
@@ -14,7 +16,6 @@ import java.io.IOException;
 public class LoginPage extends Base {
 
     public static  String path;
-    public static  String uname;
     public static String username ;
     public static String pass ;
 
@@ -33,45 +34,37 @@ public class LoginPage extends Base {
     @FindBy(xpath = "//a[contains(text(),'Forgot your password?')]")
     WebElement forgotPassword;
 
+    public LoginPage(){ PageFactory.initElements(driver, this); }
 
-    public LoginPage(){
+    public   String validateLoginPageTitle(){ return driver.getTitle(); }
 
-        PageFactory.initElements(driver, this);
-
-    }
-
-
-    public  String validateLoginPageTitle(){
-        return driver.getTitle();
-    }
-
-    public Homepage login() throws IOException {
-
-
-
-        path = System.getProperty("user.dir")+"//src//main//java//TestData//GunveerFile.xlsx";
-        FileInputStream prop = null;
+    public void login() throws IOException, InterruptedException {
+        path = System.getProperty("user.dir")+"//src//main//java//TestData//GunveerFile.xls";
+//        FileInputStream fis = new FileInputStream(path);
+        FileInputStream prop1 = null;
         try{
-            prop = new FileInputStream(path);
+            prop1 = new FileInputStream(path);
         }catch(FileNotFoundException e){
             e.printStackTrace();
-        }catch (IOException e) {
-            e.printStackTrace();
         }
-        XSSFWorkbook wb = new XSSFWorkbook(prop);
-        XSSFSheet sheet = wb.getSheet("Sheet1");
+        HSSFWorkbook wb = new HSSFWorkbook(prop1);
+        HSSFSheet sheet = wb.getSheet("Sheet1");
+        String username = sheet.getRow(1).getCell(0).getStringCellValue();
+        String  pwd = sheet.getRow(1).getCell(1).getStringCellValue();
 
-        for(int i = 1 ; i<=sheet.getLastRowNum();i++) {
-            username = sheet.getRow(i).getCell(0).getStringCellValue();
-            emailAddress.sendKeys(username);
-            pass = sheet.getRow(i).getCell(1).getStringCellValue();
-            password.sendKeys(pass);
-            loginBtn.click();
+        emailAddress.sendKeys(username);
+        password.sendKeys(pwd);
+        loginBtn.click();
 
-
-        }
-        return new Homepage();
+//        for(int i = 1 ; i<=sheet.getLastRowNum();i++) {
+//           username = sheet.getRow(i).getCell(0).getStringCellValue();
+//            emailAddress.sendKeys(username);
+//            Thread.sleep(5000);
+//            pass = sheet.getRow(i).getCell(1).getStringCellValue();
+//            password.sendKeys(pass);
+//            Thread.sleep(3000);
+//            loginBtn.click();
+//            Thread.sleep(5000);
+//        }
     }
-
-
 }

@@ -24,7 +24,7 @@ public class Homepage {
         PageFactory.initElements(driver, this);
     }
 
-    public static String verifyHomepageTitle(){
+    public  String verifyHomepageTitle(){
 
         return driver.getTitle();
     }

@@ -1,5 +1,6 @@
 package BaseTest;
 
+import PageFactory.ObjectFactory;
 import Utils.TestUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -18,17 +19,13 @@ public class Base {
 
 public static Properties prop ;
 public static WebDriver driver ;
-
+protected static ObjectFactory obj ;
     public Base()  {
 
     try{
     prop = new Properties();
     FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+"//src//main//java//Config//config.properties");
     prop.load(ip);
-
-
-
-
        }catch(FileNotFoundException e){
 
         e.printStackTrace();
@@ -36,13 +33,12 @@ public static WebDriver driver ;
         e.printStackTrace();
     }
 
-
-
     }
 
     public void initialization(){
 
-       String browsername = prop.getProperty("browser");
+        obj = new ObjectFactory() ;
+        String browsername = prop.getProperty("browser");
         if(browsername.equals("chrome")){
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();

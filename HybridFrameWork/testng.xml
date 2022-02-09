@@ -5,10 +5,7 @@
     <test verbose="2" preserve-order="true" name="C:/Users/GunveerSingh/Documents/JavaNewOne/HybridFrameWork">
         <classes>
             <class name="TestCases.LoginPageTest">
-                <methods>
-                    <include name="VerifyLoginPageTitle"/>
-<!--                    <include name="setLoginpage"/>-->
-                </methods>
+
             </class>
         </classes>
     </test>
