@@ -47,8 +47,9 @@ public class AccountEdit extends BaseTest implements AccountEdit_Interface{
 //      HSSFSheet sheet = wb.getSheet("Sheet1");
 //      String companyname = sheet.getRow(1).getCell(0).getStringCellValue();
 //   		
-//		companyName.sendKeys(companyname);s
+//		companyName.sendKeys(companyname);
 //		submitBtn.click();
+		
 		companyName.sendKeys(CreateRegisterValueEnum.COMPANY_Name_Infostride.getCompanyName());
 		submitBtn.click();
 		

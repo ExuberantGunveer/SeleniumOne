@@ -51,9 +51,7 @@ protected static ObjectFactory obj ;
         }else if(browsername.equals("FireFox")){
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver(); 	
-    	
-
-
+	
 
         }
 

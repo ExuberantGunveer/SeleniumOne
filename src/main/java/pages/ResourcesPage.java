@@ -10,6 +10,8 @@ import base.BaseTest;
 import opencart_interface.Resources_Interface;
 
 public class ResourcesPage extends BaseTest implements Resources_Interface {
+	
+//	//img[@title='British Red Cross']
 
 	
 	private String dropDownTab = "//ul[@class='dropdown-menu']//a[contains(text(),'%s')]";

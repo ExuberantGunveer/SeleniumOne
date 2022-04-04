@@ -4,6 +4,7 @@ package pagefactory;
 
 import pages.AccountEdit;
 import pages.AccountPage;
+import pages.BritishRedCrossPage;
 import pages.LoginPage;
 import pages.ResourcesPage;
 
@@ -13,6 +14,7 @@ public class ObjectFactory {
 	private AccountPage accPage;
 	private AccountEdit accEdit;
 	private ResourcesPage resoucesPage ;
+	private BritishRedCrossPage redCrossPage ;
 	
 	
 	public ResourcesPage getResourcesPage() {
@@ -46,7 +48,12 @@ public class ObjectFactory {
 		return accEdit;
 	}
 
-	
+	public BritishRedCrossPage getRedCrossPage() {
+		if(redCrossPage ==null) {
+			redCrossPage = new BritishRedCrossPage();
+		}
+		return redCrossPage;
+	}
 
 
 }
